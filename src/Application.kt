@@ -22,7 +22,10 @@ fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 @Suppress("unused") // Referenced in application.conf
 fun Application.module() {
     install(ContentNegotiation) {
-        gson {}
+        gson {
+            this.setPrettyPrinting()
+            this.setLenient()
+        }
     }
 
     routing {
